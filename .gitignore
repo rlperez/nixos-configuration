@@ -1,0 +1,35 @@
+# --- NixOS & Lix Specifics ---
+hardware-configuration.nix
+
+# --- Emacs ---
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list/
+tramp
+.\#*
+
+# --- Vim / Neovim ---
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]s[a-rt-z][a-z]
+[._]ss[a-z]
+*.un~
+.netrwhist
+undo/
+.viminfo
+.shada
+
+# --- Common Linux Editors & IDEs (VS Code, Nano, Helix) ---
+*.save
+.vscode/
+.idea/
+.helix/
+
+# --- System & Tooling Trash ---
+.DS_Store
+.direnv/
+.envrc
