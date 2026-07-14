@@ -1,0 +1,49 @@
+{ pkgs, ... }: {
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "fr0bar" ];
+  };
+  programs.atuin = {
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+  };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+  };
+  programs.git.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  programs.starship = {
+    enable = true;
+    interactiveOnly = true;
+  };
+  programs.zoxide.enable = true;
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    ansible
+    eza
+    fzf
+    ghostty
+    gitbutler
+    fastfetch
+    kubectl
+    onefetch
+    podman-compose
+    podman-desktop
+    ripgrep
+    vault
+  ];
+}

@@ -8,12 +8,22 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./packages
+      ./modules
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        librewolf
+        brave
+      '';
+      mode = "0755";
+    };
+  };
 
   networking = {
     hostName = "nixos";
@@ -44,64 +54,9 @@
     description = "Rigoberto L. Perez";
     extraGroups = [ "networkmanager" "wheel" "podman" ];
     shell = pkgs.fish;
+
   };
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
-
-  programs.ladybird.enable = true;
-  programs.firefox.enable = true;
-  programs.gamescope.enable = true;
-  programs.git.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    protontricks.enable = true;
-    dedicatedServer.openFirewall = true;
-  };
-  programs.gamemode.enable = true;
-  programs.fish = {
-    enable = true;
-    vendor = {
-      config.enable = true;
-      completions.enable = true;
-      functions.enable = true;
-    };
-  };
-  programs.bash.enable = true;
-  programs.zoxide.enable = true;
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "fr0bar" ];
-  };
-  programs.neovim.enable = true;
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-  };
-  programs.starship = {
-    enable = true;
-    interactiveOnly = true;
-  };
-  programs.atuin = {
-    enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-  };
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-  };
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
   programs.nix-ld.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -114,27 +69,8 @@
   }) ];
 
   nix.package = pkgs.lixPackageSets.stable.lix;
+  nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # List services that you want to enable:
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
-  services.printing.enable = true;
-  services.pulseaudio.enable = false;
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
 
   xdg.portal.enable = true;
 

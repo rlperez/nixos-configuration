@@ -1,8 +1,14 @@
 { pkgs, ... }: {
+  programs.bash.enable = true;
   programs.fish = {
     enable = true;
+    vendor = {
+      config.enable = true;
+      completions.enable = true;
+      functions.enable = true;
+    };
     interactiveShellInit = ''
-      set fish_greeting # Disable greeting
+      fish_logo
     '';
   };
 
@@ -18,9 +24,7 @@
     fishPlugins.plugin-sudope
     fishPlugins.puffer
     fishPlugins.sponge
-
-    # Use 3rd-party fish plugins manually packaged.
-    (pkgs.callPackage ./fish-eza.nix { inherit (pkgs.fishPlugins) buildFishPlugin; } )
-    (pkgs.callPackage ./fish_logo.nix { inherit (pkgs.fishPlugins) buildFishPlugin; } )
+    fishPlugins.fish-eza
+    fishPlugins.fish-logo
   ];
 }
