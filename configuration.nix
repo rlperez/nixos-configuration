@@ -13,7 +13,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
 
   environment.etc = {
     "1password/custom_allowed_browsers" = {
@@ -60,18 +60,10 @@
   programs.nix-ld.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ (final: prev: {
-    inherit (prev.lixPackageSets.stable)
-      nixpkgs-review
-      nix-eval-jobs
-      nix-fast-build
-      colmena;
-  }) ];
-
-  nix.package = pkgs.lixPackageSets.stable.lix;
-  nix.settings.auto-optimise-store = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = [ "nix-command" "flakes" ];   
+  };
   xdg.portal.enable = true;
 
   # services.openssh.enable = true;
