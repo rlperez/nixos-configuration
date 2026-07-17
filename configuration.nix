@@ -27,7 +27,12 @@
 
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi = {
+        powersave = false;
+      };
+    };
   };
 
   hardware.graphics.enable32Bit = true;
@@ -62,7 +67,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = [ "nix-command" "flakes" ];   
+    experimental-features = [ "nix-command" "flakes" ];
   };
   xdg.portal.enable = true;
 
