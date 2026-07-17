@@ -41,6 +41,7 @@
     fastfetch
     kubectl
     onefetch
+    p7zip
     podman-compose
     podman-desktop
     ripgrep
