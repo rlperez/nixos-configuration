@@ -2,7 +2,7 @@
   programs.gamescope = {
     enable = true;
     enableWsi = true;
-    capSysNice = true;
+    capSysNice = false;
   };
   programs.steam = {
     enable = true;
