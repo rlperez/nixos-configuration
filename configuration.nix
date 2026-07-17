@@ -11,9 +11,13 @@
       ./modules
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
+  };
 
   environment.etc = {
     "1password/custom_allowed_browsers" = {
@@ -35,7 +39,10 @@
     };
   };
 
-  hardware.graphics.enable32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   hardware.keyboard.zsa.enable = true;
 
   time.timeZone = "America/New_York";
