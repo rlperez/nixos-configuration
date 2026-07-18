@@ -15,6 +15,7 @@ in
     signon-kwallet-extension
     signond
 
+    logseq
     # RSS reader
     newsflash
   ];
