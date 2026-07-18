@@ -33,7 +33,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    ansible
     eza
     fzf
     ghostty
@@ -45,6 +44,5 @@
     podman-compose
     podman-desktop
     ripgrep
-    vault
   ];
 }
