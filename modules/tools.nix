@@ -9,12 +9,6 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-  };
   programs.git.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -33,6 +27,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dotenvx
     eza
     fzf
     ghostty
