@@ -2,15 +2,20 @@
   description = "Desktop NixOS System";
 
   inputs = {
-    # Tracking the unstable channel for cutting-edge packages
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
 
-  outputs = { self, nixpkgs, nix-cachyos-kernel, ... } @inputs: {
+  outputs = { self, home-manager, nixpkgs, nix-cachyos-kernel, ... } @inputs: {
     nixosConfigurations = {
-      # Replace "nixos" with your actual hostname if you changed it
       nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+        };
         system = "x86_64-linux";
         modules = [
           ({ pkgs, ... }: {
@@ -23,6 +28,7 @@
                   nix-fast-build
                   colmena;
               })
+              home-manager.nixosModules.home-manager
               nix-cachyos-kernel.overlays.pinned
             ];
 
