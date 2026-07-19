@@ -7,7 +7,7 @@
   programs.atuin = {
     enable = true;
     enableFishIntegration = true;
-    enableBashIntegration = true;
+    enableBashIntegration = false;
   };
   programs.git.enable = true;
   programs.gnupg.agent = {
