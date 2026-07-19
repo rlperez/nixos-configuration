@@ -28,12 +28,12 @@
                   nix-fast-build
                   colmena;
               })
-              home-manager.nixosModules.home-manager
               nix-cachyos-kernel.overlays.pinned
             ];
 
             nix.package = pkgs.lixPackageSets.stable.lix;
           })
+          home-manager.nixosModules.home-manager
           ./configuration.nix
         ];
       };

@@ -25,6 +25,10 @@
     };
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   networking = {
     hostName = "nixos";
     networkmanager = {
@@ -40,6 +44,13 @@
     enable32Bit = true;
   };
   hardware.keyboard.zsa.enable = true;
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+
+    users.fr0bar = import ./users/fr0bar.nix;
+  };
 
   time.timeZone = "America/New_York";
 
@@ -62,7 +73,6 @@
     description = "Rigoberto L. Perez";
     extraGroups = [ "networkmanager" "wheel" "podman" ];
     shell = pkgs.fish;
-
   };
 
   programs.nix-ld.enable = true;
