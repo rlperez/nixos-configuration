@@ -82,6 +82,7 @@
     auto-optimise-store = true;
     experimental-features = [ "nix-command" "flakes" ];
   };
+
   xdg.portal.enable = true;
 
   # services.openssh.enable = true;

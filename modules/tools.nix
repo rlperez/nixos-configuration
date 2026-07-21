@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
@@ -8,6 +8,14 @@
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = false;
+    settings = {
+      dir = "~/.atuin/logs";
+      secrets_filter = true;
+      show_numeric_shortcuts = true;
+      store_failed = true;
+      style = "full";
+      update_check = false;
+    };
   };
   programs.git.enable = true;
   programs.gnupg.agent = {
