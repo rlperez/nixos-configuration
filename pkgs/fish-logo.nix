@@ -1,5 +1,4 @@
 {
-  lib,
   buildFishPlugin,
   fetchFromGitHub,
 }:
@@ -13,4 +12,3 @@ buildFishPlugin {
     hash = "sha256-DZXQt0fa5LdbJ4vPZFyJf5FWB46Dbk58adpHqbiUmyY=";
   };
 }
-
