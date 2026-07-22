@@ -78,9 +78,15 @@
   programs.nix-ld.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings = {
-    auto-optimise-store = true;
-    experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
   };
 
   xdg.portal.enable = true;
