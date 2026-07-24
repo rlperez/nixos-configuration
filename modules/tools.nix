@@ -41,6 +41,7 @@
     ghostty
     gitbutler
     fastfetch
+    jq
     kubectl
     onefetch
     p7zip
