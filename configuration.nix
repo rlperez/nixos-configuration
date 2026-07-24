@@ -71,7 +71,7 @@
   users.users."fr0bar" = {
     isNormalUser = true;
     description = "Rigoberto L. Perez";
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [ "lp" "networkmanager" "podman" "wheel" ];
     shell = pkgs.fish;
   };
 
