@@ -11,6 +11,11 @@
 
     ".config/shell/.env".source = ../config/shell/.env;
     ".config/shell/bash/.env".source = ../config/shell/bash/.env;
+    ".config/fish" = {
+      source = ../config/shell/fish;
+      force = true;
+      recursive = true;
+    };
   };
 
   xdg.enable = true;

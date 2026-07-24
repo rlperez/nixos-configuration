@@ -7,9 +7,6 @@
       completions.enable = true;
       functions.enable = true;
     };
-    interactiveShellInit = ''
-      fish_logo
-    '';
   };
 
   environment.systemPackages = with pkgs; [
