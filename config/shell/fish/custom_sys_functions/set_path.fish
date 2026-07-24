@@ -18,7 +18,7 @@ function set_path
   set -l doom_bin_path $HOME/.emacs.d/bin
   safe_fish_add_path $doom_bin_path
 
-  set -l go_bin_path "$(string replace -r '/[^/]*$' '' -- (which go))"
+  set -l go_bin_path "$(string replace -r '/[^/]*$' '' -- (which go 2>&1))"
   safe_fish_add_path $go_bin_path
 
   set -l go_bin_install_path "$HOME/go/bin"
