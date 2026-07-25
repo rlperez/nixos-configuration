@@ -1,5 +1,4 @@
 {
-  lib,
   buildFishPlugin,
   fetchFromGitHub,
 }:
