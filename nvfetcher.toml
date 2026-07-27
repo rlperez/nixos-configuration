@@ -1,0 +1,14 @@
+[fish-eza]
+src.git = "https://github.com/givensuman/fish-eza.git"
+src.branch = "main"
+fetch.github = "givensuman/fish-eza"
+
+[fish-logo]
+src.git = "https://github.com/laughedelic/fish_logo.git"
+src.branch = "master"
+fetch.github = "laughedelic/fish_logo"
+
+[logseq]
+src.github = "logseq/logseq"
+fetch.url = "https://github.com/logseq/logseq/releases/download/$ver/Logseq-linux-x86_64-$ver.AppImage"
+src.include_regex = "^2\\.[0-9]+\\.[0-9]+$"

@@ -1,0 +1,59 @@
+{
+    "fish-eza": {
+        "cargoLock": null,
+        "date": "2026-02-06",
+        "extract": null,
+        "name": "fish-eza",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "givensuman",
+            "repo": "fish-eza",
+            "rev": "fb2d8c70e6d894d3b55259e4c4e659a4850581b0",
+            "sha256": "sha256-cFUHMSEMxq/XSeKOLCUArgM9ogY6NqrPmhxaHn5bbQs=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "fb2d8c70e6d894d3b55259e4c4e659a4850581b0"
+    },
+    "fish-logo": {
+        "cargoLock": null,
+        "date": "2020-11-26",
+        "extract": null,
+        "name": "fish-logo",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "laughedelic",
+            "repo": "fish_logo",
+            "rev": "dc6a40836de8c24c62ad7c4365aa9f21292c3e6e",
+            "sha256": "sha256-DZXQt0fa5LdbJ4vPZFyJf5FWB46Dbk58adpHqbiUmyY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "dc6a40836de8c24c62ad7c4365aa9f21292c3e6e"
+    },
+    "logseq": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "logseq",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Sd42cHizdnD+vbmH5WK3Xe4eGulsKL+4c4d5xCKX3Qw=",
+            "type": "url",
+            "url": "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage"
+        },
+        "version": "2.0.1"
+    }
+}

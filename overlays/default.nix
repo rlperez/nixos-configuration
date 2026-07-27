@@ -1,22 +1,35 @@
-final: prev: {
+final: prev:
+
+let
+  sources = import ../_sources/generated.nix {
+    inherit (prev)
+      fetchgit
+      fetchurl
+      fetchFromGitHub
+      dockerTools;
+  };
+in {
   fishPlugins = prev.fishPlugins // {
-    fish-eza = prev.callPackage ../pkgs/fish-eza.nix {
-      buildFishPlugin = prev.fishPlugins.buildFishPlugin;
+    fish-eza = prev.fishPlugins.buildFishPlugin {
+      inherit (sources.fish-eza)
+        pname
+        version
+        src;
     };
 
-    fish-logo = prev.callPackage ../pkgs/fish-logo.nix {
-      buildFishPlugin = prev.fishPlugins.buildFishPlugin;
+    fish-logo = prev.fishPlugins.buildFishPlugin {
+      inherit (sources.fish-logo)
+        pname
+        version
+        src;
     };
   };
 
   logseq = prev.appimageTools.wrapType2 {
-    pname = "logseq";
-    version = "2.0.1";
-
-    src = prev.fetchurl {
-      url = "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage";
-      hash = "sha256-Sd42cHizdnD+vbmH5WK3Xe4eGulsKL+4c4d5xCKX3Qw=";
-    };
+    inherit (sources.logseq)
+      pname
+      version
+      src;
 
     meta = {
       description = "Logseq";
