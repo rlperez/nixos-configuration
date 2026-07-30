@@ -46,9 +46,9 @@
   hardware.keyboard.zsa.enable = true;
 
   home-manager = {
+    backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-
     users.fr0bar = import ./users/fr0bar.nix;
   };
 

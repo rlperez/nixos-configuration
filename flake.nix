@@ -8,9 +8,10 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    nvfetcher.url = "github:berberman/nvfetcher";
   };
 
-  outputs = { self, home-manager, nixpkgs, nix-cachyos-kernel, ... } @inputs: {
+  outputs = { self, home-manager, nixpkgs, nix-cachyos-kernel, nvfetcher, ... } @inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -38,5 +39,16 @@
         ];
       };
     };
+    devShells.x86_64-linux.default =
+      let
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+      in
+      pkgs.mkShell {
+        packages = [
+          nvfetcher.packages.x86_64-linux.default
+        ];
+      };
   };
 }
