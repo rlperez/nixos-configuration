@@ -25,6 +25,8 @@
     };
   };
 
+  maintenance.repoPath = "/home/fr0bar/Projects/nixos-config";
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
   ];
