@@ -16,7 +16,6 @@
         ];
         serviceConfig = {
           Type = "oneshot";
-          User = "fr0bar";
           WorkingDirectory = config.maintenance.repoPath;
           ExecStart = "${config.maintenance.repoPath}/scripts/update-flake.sh";
         };
@@ -30,7 +29,6 @@
         ];
         serviceConfig = {
           Type = "oneshot";
-          User = "fr0bar";
           WorkingDirectory = config.maintenance.repoPath;
           ExecStart = "${config.maintenance.repoPath}/scripts/update-all.sh";
         };
