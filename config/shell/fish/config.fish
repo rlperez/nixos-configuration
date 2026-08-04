@@ -61,6 +61,10 @@ if status is-interactive
         alias tf terraform
     end
 
+    if type -q direnv
+        direnv hook fish | source
+    end
+
     alias src "source $HOME/.config/fish/config.fish"
 
     fish_logo (random_color) (random_color) (random_color)

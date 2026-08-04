@@ -35,6 +35,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    direnv
     dotenvx
     eza
     fzf
@@ -43,10 +44,12 @@
     fastfetch
     jq
     kubectl
+    nix-direnv
     onefetch
     p7zip
     podman-compose
     podman-desktop
     ripgrep
+    tre
   ];
 }
