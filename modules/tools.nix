@@ -6,8 +6,6 @@
   };
   programs.atuin = {
     enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = false;
     settings = {
       dir = "~/.atuin/logs";
       secrets_filter = true;
@@ -22,12 +20,9 @@
     nix-direnv.enable = true;
     config = {
       global = {
+        hide_env_diff = true;
+        load_dotenv = true;
         strict_env = true;
-      };
-      whitelist = {
-        prefix = [
-          "/home/fr0bar/Projects"
-        ];
       };
     };
   };
