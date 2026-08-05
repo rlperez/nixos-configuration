@@ -18,7 +18,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    config = {
+    settings = {
       global = {
         hide_env_diff = true;
         load_dotenv = true;
