@@ -17,6 +17,20 @@
       update_check = false;
     };
   };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    config = {
+      global = {
+        strict_env = true;
+      };
+      whitelist = {
+        prefix = [
+          "/home/fr0bar/Projects"
+        ];
+      };
+    };
+  };
   programs.git.enable = true;
   programs.gnupg.agent = {
     enable = true;
