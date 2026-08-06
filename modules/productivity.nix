@@ -6,14 +6,12 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    mailspring
-    # KMail and dependencies
+    betterbird-future
     kaccounts-integration
     signon-kwallet-extension
     signond
 
-    logseq
-    # RSS reader
+    logseq-db
     newsflash
   ];
 }
