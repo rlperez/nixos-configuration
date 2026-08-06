@@ -6,6 +6,22 @@
   dockerTools,
 }:
 {
+  betterbird-future = {
+    pname = "betterbird-future";
+    version = "153.0esr-bb6-build3";
+    src = fetchurl {
+      url = "https://www.betterbird.eu/downloads/153-Preview/betterbird-153.0esr-bb6-build3.en-US.linux-x86_64.tar.xz";
+      sha256 = "sha256-pkHk/2Q+fRQP+nVcXiw+vvC1v2OC39dM4ymeVb44mwE=";
+    };
+  };
+  betterbird-release = {
+    pname = "betterbird-release";
+    version = "140.13.0esr-bb25";
+    src = fetchurl {
+      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-140.13.0esr-bb25.en-US.linux-x86_64.tar.xz";
+      sha256 = "sha256-00bAxsT43N4gT5fy14DWhVMLkWPYZLzNXBSUVjlLocA=";
+    };
+  };
   fish-eza = {
     pname = "fish-eza";
     version = "fb2d8c70e6d894d3b55259e4c4e659a4850581b0";
@@ -30,8 +46,16 @@
     };
     date = "2020-11-26";
   };
-  logseq = {
-    pname = "logseq";
+  logseq-db = {
+    pname = "logseq-db";
+    version = "2.0.1";
+    src = fetchurl {
+      url = "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage";
+      sha256 = "sha256-Sd42cHizdnD+vbmH5WK3Xe4eGulsKL+4c4d5xCKX3Qw=";
+    };
+  };
+  logseq-md = {
+    pname = "logseq-md";
     version = "2.0.1";
     src = fetchurl {
       url = "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage";

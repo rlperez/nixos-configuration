@@ -9,32 +9,27 @@ let
       dockerTools;
   };
 in {
-  fishPlugins = prev.fishPlugins // {
-    fish-eza = prev.fishPlugins.buildFishPlugin {
-      inherit (sources.fish-eza)
-        pname
-        version
-        src;
-    };
-
-    fish-logo = prev.fishPlugins.buildFishPlugin {
-      inherit (sources.fish-logo)
-        pname
-        version
-        src;
-    };
+  betterbird = final.callPackage ../pkgs/betterbird/release.nix {
+    inherit sources;
   };
 
-  logseq = prev.appimageTools.wrapType2 {
-    inherit (sources.logseq)
-      pname
-      version
-      src;
+  betterbird-future = final.callPackage ../pkgs/betterbird/future.nix {
+    inherit sources;
+  };
 
-    meta = {
-      description = "Logseq";
-      homepage = "https://logseq.com";
-      platforms = [ "x86_64-linux" ];
-    };
+  fish-eza = final.callPackage ../pkgs/fish-eza.nix {
+    inherit sources;
+  };
+
+  fish-logo = final.callPackage ../pkgs/fish-logo.nix {
+    inherit sources;
+  };
+
+  logseq-db = final.callPackage ../pkgs/logseq/database.nix {
+    inherit sources;
+  };
+
+  logseq = final.callPackage ../pkgs/logseq/markdown.nix {
+    inherit sources;
   };
 }

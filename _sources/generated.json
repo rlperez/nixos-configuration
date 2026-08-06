@@ -1,4 +1,34 @@
 {
+    "betterbird-future": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "betterbird-future",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-pkHk/2Q+fRQP+nVcXiw+vvC1v2OC39dM4ymeVb44mwE=",
+            "type": "url",
+            "url": "https://www.betterbird.eu/downloads/153-Preview/betterbird-153.0esr-bb6-build3.en-US.linux-x86_64.tar.xz"
+        },
+        "version": "153.0esr-bb6-build3"
+    },
+    "betterbird-release": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "betterbird-release",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-00bAxsT43N4gT5fy14DWhVMLkWPYZLzNXBSUVjlLocA=",
+            "type": "url",
+            "url": "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-140.13.0esr-bb25.en-US.linux-x86_64.tar.xz"
+        },
+        "version": "140.13.0esr-bb25"
+    },
     "fish-eza": {
         "cargoLock": null,
         "date": "2026-02-06",
@@ -41,11 +71,26 @@
         },
         "version": "dc6a40836de8c24c62ad7c4365aa9f21292c3e6e"
     },
-    "logseq": {
+    "logseq-db": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "logseq",
+        "name": "logseq-db",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Sd42cHizdnD+vbmH5WK3Xe4eGulsKL+4c4d5xCKX3Qw=",
+            "type": "url",
+            "url": "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage"
+        },
+        "version": "2.0.1"
+    },
+    "logseq-md": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "logseq-md",
         "passthru": null,
         "pinned": false,
         "src": {
