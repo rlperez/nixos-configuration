@@ -4,7 +4,7 @@
   sources,
   channel,
 }:
-# TODO: Review any package dependencies and the deployment instructions.
+# TODO: Review the deployment instructions.
 let
   source = sources."betterbird-${channel}";
 in
