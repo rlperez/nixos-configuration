@@ -1,12 +1,29 @@
-{ lib,
+{
+  lib,
   stdenv,
   makeWrapper,
+  makeDesktopItem,
   sources,
   channel,
 }:
-# TODO: Review the deployment instructions.
+
 let
   source = sources."betterbird-${channel}";
+
+  desktopItem = makeDesktopItem {
+    name = "eu.betterbird.Betterbird";
+    desktopName = "Betterbird";
+    exec = "betterbird %u";
+    icon = "betterbird";
+    type = "Application";
+    categories = [
+      "Office"
+      "Email"
+    ];
+    mimeTypes = [
+      "x-scheme-handler/mailto"
+    ];
+  };
 in
 stdenv.mkDerivation {
   pname = "betterbird";
@@ -17,21 +34,25 @@ stdenv.mkDerivation {
   ];
 
   installPhase = ''
-    mkdir -p $out/lib/betterbird
-    cp -r . $out/lib/betterbird
+    runHook preInstall
 
-    mkdir -p $out/bin
+    mkdir -p "$out/lib/betterbird"
+    cp -r . "$out/lib/betterbird"
 
+    mkdir -p "$out/bin"
     makeWrapper \
-      $out/lib/betterbird/betterbird \
-      $out/bin/betterbird
-  '';
+      "$out/lib/betterbird/betterbird" \
+      "$out/bin/betterbird"
 
-  postFixup = ''
-    wrapProgram $out/lib/betterbird/betterbird \
-      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [
-        stdenv.cc.cc
-      ]}
+    mkdir -p "$out/share/icons/hicolor/256x256/apps"
+    cp "$out/lib/betterbird/chrome/icons/default/default256.png" \
+      "$out/share/icons/hicolor/256x256/apps/betterbird.png"
+
+    mkdir -p "$out/share/applications"
+    cp "${desktopItem}/share/applications/eu.betterbird.Betterbird.desktop" \
+      "$out/share/applications/"
+
+    runHook postInstall
   '';
 
   meta = {
