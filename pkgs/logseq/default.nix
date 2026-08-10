@@ -6,7 +6,7 @@
 
 appimageTools.wrapType2 {
   pname = "logseq";
-  inherit (sources."logs-${channel}")
+  inherit (sources."logseq-${channel}")
     version
     src;
 
@@ -15,7 +15,7 @@ appimageTools.wrapType2 {
   meta = {
     description = "Logseq";
     homepage = "https://logseq.com";
-    license = lib.licenses.agpl3;
+    license = lib.licenses.agpl3Only;
     platforms = [ "x86_64-linux" ];
     mainProgram = "logseq";
   };
