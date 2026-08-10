@@ -17,12 +17,14 @@ in {
     inherit sources;
   };
 
-  fish-eza = final.callPackage ../pkgs/fish-eza.nix {
-    inherit sources;
-  };
+  fishPlugins = prev.fishPlugins // {
+    fish-eza = final.callPackage ../pkgs/fish-eza.nix {
+      inherit sources;
+    };
 
-  fish-logo = final.callPackage ../pkgs/fish-logo.nix {
-    inherit sources;
+    fish-logo = final.callPackage ../pkgs/fish-logo.nix {
+      inherit sources;
+    };
   };
 
   logseq-db = final.callPackage ../pkgs/logseq/database.nix {
