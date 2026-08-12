@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-cachyos-kernel = {
       url = "github:xddxdd/nix-cachyos-kernel";
@@ -14,7 +18,7 @@
     nvfetcher.url = "github:berberman/nvfetcher";
   };
 
-  outputs = { self, home-manager, nixpkgs, nix-cachyos-kernel, nvfetcher, ... } @inputs: {
+  outputs = { self, home-manager, nixpkgs, nix-cachyos-kernel, nix-ld, nvfetcher, ... } @inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -37,6 +41,7 @@
 
             nix.package = pkgs.lixPackageSets.stable.lix;
           })
+          nix-ld.nixosModules.nix-ld
           home-manager.nixosModules.home-manager
           ./configuration.nix
         ];
