@@ -6,8 +6,6 @@
   };
   programs.atuin = {
     enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = false;
     settings = {
       dir = "~/.atuin/logs";
       secrets_filter = true;
@@ -15,6 +13,17 @@
       store_failed = true;
       style = "full";
       update_check = false;
+    };
+  };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    settings = {
+      global = {
+        hide_env_diff = true;
+        load_dotenv = true;
+        strict_env = true;
+      };
     };
   };
   programs.git.enable = true;
@@ -35,6 +44,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    direnv
     dotenvx
     eza
     fzf
@@ -43,10 +53,12 @@
     fastfetch
     jq
     kubectl
+    nix-direnv
     onefetch
     p7zip
     podman-compose
     podman-desktop
     ripgrep
+    tre
   ];
 }

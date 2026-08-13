@@ -25,22 +25,6 @@
     };
   };
 
-  maintenance.repoPath = "/home/fr0bar/Projects/nixos-config";
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
-
-  networking = {
-    hostName = "nixos";
-    networkmanager = {
-      enable = true;
-      wifi = {
-        powersave = false;
-      };
-    };
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -53,8 +37,6 @@
     useUserPackages = true;
     users.fr0bar = import ./users/fr0bar.nix;
   };
-
-  time.timeZone = "America/New_York";
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -69,17 +51,25 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  security.rtkit.enable = true;
-  users.users."fr0bar" = {
-    isNormalUser = true;
-    description = "Rigoberto L. Perez";
-    extraGroups = [ "lp" "networkmanager" "podman" "wheel" ];
-    shell = pkgs.fish;
+  maintenance.repoPath = "/home/fr0bar/Projects/nixos-config";
+
+  networking = {
+    hostName = "nixos";
+    networkmanager = {
+      enable = true;
+      wifi = {
+        powersave = false;
+      };
+    };
   };
 
-  programs.nix-ld.enable = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-39.8.10"
+    ];
+  };
 
-  nixpkgs.config.allowUnfree = true;
   nix = {
     gc = {
       automatic = true;
@@ -90,6 +80,16 @@
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
+  };
+
+  security.rtkit.enable = true;
+  time.timeZone = "America/New_York";
+
+  users.users."fr0bar" = {
+    isNormalUser = true;
+    description = "Rigoberto L. Perez";
+    extraGroups = [ "lp" "networkmanager" "podman" "wheel" ];
+    shell = pkgs.fish;
   };
 
   xdg.portal.enable = true;

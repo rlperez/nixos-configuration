@@ -3,4 +3,4 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-sudo nixos-rebuild switch --flake path:.
+nixos-rebuild switch --flake path:.
