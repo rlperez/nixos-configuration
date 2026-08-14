@@ -1,5 +1,12 @@
-{ inputs, pkgs, primary_username, primary_user_full_name, ... }:
+{ inputs, pkgs, ... }:
+let
+  primary_username = "fr0bar";
+  primary_user_full_name = "Rigoberto L. Perez";
+in
 {
+  _module.args.primary_username = primary_username;
+  _module.args.primary_user_fullname = primary_user_full_name;
+
   imports =
     [
       ./hardware-configuration.nix
@@ -32,6 +39,10 @@
   hardware.keyboard.zsa.enable = true;
 
   home-manager = {
+    extraSpecialArgs = {
+      inherit primary_username;
+    };
+
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;

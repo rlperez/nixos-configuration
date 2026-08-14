@@ -1,7 +1,7 @@
 { primary_username, ... }:
 
 {
-  home.primary_username = primary_username;
+  home.username = primary_username;
   home.homeDirectory = "/home/${primary_username}";
   home.stateVersion = "26.05";
   home.file = {
