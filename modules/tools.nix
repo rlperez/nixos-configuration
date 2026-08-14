@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, primary_username, ... }: {
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "fr0bar" ];
+    polkitPolicyOwners = [ primary_username ];
   };
   programs.atuin = {
     enable = true;

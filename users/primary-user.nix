@@ -1,8 +1,8 @@
-{ ... }:
+{ primary_username, ... }:
 
 {
-  home.username = "fr0bar";
-  home.homeDirectory = "/home/fr0bar";
+  home.primary_username = primary_username;
+  home.homeDirectory = "/home/${primary_username}";
   home.stateVersion = "26.05";
   home.file = {
     # Bash

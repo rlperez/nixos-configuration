@@ -23,6 +23,8 @@
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
+          primary_username = "fr0bar";
+          user_fullname = "Rigoberto L. Perez";
         };
         system = "x86_64-linux";
         modules = [

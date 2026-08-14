@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, primary_username, primary_user_full_name, ... }:
 {
   imports =
     [
@@ -35,7 +35,9 @@
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.fr0bar = import ./users/fr0bar.nix;
+    users.${primary_username} = import ./users/primary-user.nix {
+      inherit primary_username;
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -51,7 +53,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  maintenance.repoPath = "/home/fr0bar/Projects/nixos-config";
+  maintenance.repoPath = "/home/${primary_username}/Projects/nixos-config";
 
   networking = {
     hostName = "nixos";
@@ -86,9 +88,9 @@
   security.rtkit.enable = true;
   time.timeZone = "America/New_York";
 
-  users.users."fr0bar" = {
+  users.users.${primary_username} = {
     isNormalUser = true;
-    description = "Rigoberto L. Perez";
+    description = primary_user_full_name;
     extraGroups = [ "lp" "networkmanager" "podman" "wheel" ];
     shell = pkgs.fish;
   };
