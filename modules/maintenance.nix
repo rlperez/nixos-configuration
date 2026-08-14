@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, primary_username, ... }:
 {
   options.maintenance.repoPath = lib.mkOption {
     type = lib.types.path;
@@ -7,7 +7,7 @@
 
   config = {
     systemd.services = {
-      flake-update = {
+      update-daily = {
         description = "Update flake inputs";
         path = with pkgs; [
           bash
@@ -16,11 +16,13 @@
         ];
         serviceConfig = {
           Type = "oneshot";
+          User = primary_username;
+          Group = "users";
           WorkingDirectory = config.maintenance.repoPath;
-          ExecStart = "${config.maintenance.repoPath}/scripts/update-flake.sh";
+          ExecStart = "${config.maintenance.repoPath}/scripts/daily.sh";
         };
       };
-      update-all = {
+      update-weekly = {
         description = "Update all sources";
         path = with pkgs; [
           bash
@@ -29,8 +31,10 @@
         ];
         serviceConfig = {
           Type = "oneshot";
+          User = primary_username;
+          Group = "users";
           WorkingDirectory = config.maintenance.repoPath;
-          ExecStart = "${config.maintenance.repoPath}/scripts/update-all.sh";
+          ExecStart = "${config.maintenance.repoPath}/scripts/weekly.sh";
         };
       };
     };
@@ -39,14 +43,14 @@
       flake-update = {
         wantedBy = [ "timers.target" ];
         timerConfig = {
-          OnCalendar = "Mon..Sat 03:00";
+          OnCalendar = "Mon..Sat 10:00";
           Persistent = true;
         };
       };
       update-all = {
         wantedBy = [ "timers.target" ];
         timerConfig = {
-          OnCalendar = "Sun 03:00";
+          OnCalendar = "Sun 10:00";
           Persistent = true;
         };
       };
