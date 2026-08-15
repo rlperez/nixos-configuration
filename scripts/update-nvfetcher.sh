@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+: "${REPO_PATH:?REPO_PATH is not set}"
+: "${GIT_USERNAME:?GIT_USERNAME is not set}"
 
-nix develop -c nvfetcher "$@"
+cd "$REPO_PATH"
+
+exec runuser -u "$GIT_USERNAME" -- nix develop -c nvfetcher "$@"

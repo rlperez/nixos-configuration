@@ -2,6 +2,7 @@
 let
   primary_username = "fr0bar";
   primary_user_full_name = "Rigoberto L. Perez";
+  repo_path = "/home/${primary_username}/Projects/nixos-config";
 in
 {
   _module.args.primary_username = primary_username;
@@ -64,7 +65,10 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  maintenance.repoPath = "/home/${primary_username}/Projects/nixos-config";
+  maintenance = {
+    repoPath = repo_path;
+    user = primary_username;
+  };
 
   networking = {
     hostName = "nixos";

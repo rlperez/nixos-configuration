@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+: "${REPO_PATH:?REPO_PATH is not set}"
 
-nixos-rebuild switch --flake path:.
+cd "$REPO_PATH"
+
+exec nixos-rebuild switch --flake "path:$REPO_PATH"
