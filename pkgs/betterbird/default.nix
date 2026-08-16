@@ -4,6 +4,7 @@
   channel,
   lib,
   makeDesktopItem,
+  makeWrapper,
   patchelfUnstable,
   sources,
   stdenv,
@@ -52,6 +53,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     autoPatchelfHook
+    makeWrapper
     patchelfUnstable
     wrapGAppsHook3
   ];
@@ -90,6 +92,11 @@ stdenv.mkDerivation {
     done
 
     runHook postInstall
+  '';
+
+  postInstall = ''
+    wrapProgram "$out/bin/betterbird" \
+      --set MOZ_LEGACY_PROFILES 1
   '';
 
   meta = {
