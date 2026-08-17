@@ -8,10 +8,10 @@
 {
   betterbird-future = {
     pname = "betterbird-future";
-    version = "153.0esr-bb6-build6";
+    version = "153.0esr-bb6-build10";
     src = fetchurl {
-      url = "https://www.betterbird.eu/downloads/153-Preview/betterbird-153.0esr-bb6-build6.en-US.linux-x86_64.tar.xz";
-      sha256 = "sha256-aw8L+keuTXd/oUAPaNYRqf+lLpn+YZnM7kS0uFKi0jE=";
+      url = "https://www.betterbird.eu/downloads/153-Preview/betterbird-153.0esr-bb6-build10.en-US.linux-x86_64.tar.xz";
+      sha256 = "sha256-Qk9PPx9ObvDSh8x5Lmk7WWDZEyluUa1A8EFiCcpWcT0=";
     };
   };
   betterbird-release = {
