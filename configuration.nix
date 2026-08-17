@@ -1,5 +1,6 @@
 { inputs, pkgs, ... }:
 let
+  host_name = "nixos";
   primary_username = "fr0bar";
   primary_user_full_name = "Rigoberto L. Perez";
   repo_path = "/home/${primary_username}/Projects/nixos-config";
@@ -7,6 +8,7 @@ in
 {
   _module.args.primary_username = primary_username;
   _module.args.primary_user_fullname = primary_user_full_name;
+  _module.args.repo_path = repo_path;
 
   imports =
     [
@@ -67,11 +69,11 @@ in
 
   maintenance = {
     repoPath = repo_path;
-    user = primary_username;
+    hostName = host_name;
   };
 
   networking = {
-    hostName = "nixos";
+    hostName = host_name;
     networkmanager = {
       enable = true;
       wifi = {
@@ -119,11 +121,25 @@ in
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "26.05";
+  system = {
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It‘s perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    stateVersion = "26.05";
+    autoUpgrade = {
+      dates = "Sun 05:00";
+      enable = true;
+      flags = [
+        "--commit-lock-file"
+        "--print-build-logs"
+      ];
+      flake = "${repo_path}/flake.nix";
+      operation = "switch";
+      persistent = true;
+      randomizedDelaySec = "30min";
+    };
+  };
 }
