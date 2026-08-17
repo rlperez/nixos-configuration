@@ -1,24 +1,39 @@
 { config, lib, pkgs, ... }:
+let
+  git_author_name = "NixOS Auto-upgrade";
+  git_author_email = "root@&lt;${config.maintenance.hostName}&gt;";
+  git_committer_name = "NixOS Auto-upgrade";
+  git_committer_email = "root@&lt;${config.maintenance.hostName}&gt;";
+in
 {
   options.maintenance = {
     repoPath = lib.mkOption {
       type = lib.types.path;
       description = "Path to the nixos-config checkout";
     };
-
-    user = lib.mkOption {
+    hostName = lib.mkOption {
       type = lib.types.str;
-      description = "User that owns the nixos-config checkout";
+      description = "Computer hostname";
     };
   };
 
   config = {
     systemd.services = {
+      nixos-upgrade.environment = {
+        GIT_AUTHOR_NAME = git_author_name;
+        GIT_AUTHOR_EMAIL = git_author_email;
+        GIT_COMMITTER_NAME = git_committer_name;
+        GIT_COMMITTER_EMAIL = git_committer_email;
+      };
+
       update-daily = {
-        description = "Update flake inputs";
+        description = "Update nvfetcher packages";
         environment = {
           REPO_PATH = config.maintenance.repoPath;
-          GIT_USERNAME = config.maintenance.user;
+          GIT_AUTHOR_NAME = git_author_name;
+          GIT_AUTHOR_EMAIL = git_author_email;
+          GIT_COMMITTER_NAME = git_committer_name;
+          GIT_COMMITTER_EMAIL = git_committer_email;
         };
         path = with pkgs; [
           bash
@@ -32,38 +47,13 @@
           ExecStart = "${config.maintenance.repoPath}/scripts/daily.sh";
         };
       };
-      update-weekly = {
-        description = "Update all sources";
-        environment = {
-          REPO_PATH = config.maintenance.repoPath;
-          GIT_USERNAME = config.maintenance.user;
-        };
-        path = with pkgs; [
-          bash
-          git
-          nix
-          util-linux
-        ];
-        serviceConfig = {
-          Type = "oneshot";
-          WorkingDirectory = config.maintenance.repoPath;
-          ExecStart = "${config.maintenance.repoPath}/scripts/weekly.sh";
-        };
-      };
     };
 
     systemd.timers = {
       update-daily = {
         wantedBy = [ "timers.target" ];
         timerConfig = {
-          OnCalendar = "Mon..Sat 5:00";
-          Persistent = true;
-        };
-      };
-      update-weekly = {
-        wantedBy = [ "timers.target" ];
-        timerConfig = {
-          OnCalendar = "Sun 5:00";
+          OnCalendar = "5:00";
           Persistent = true;
         };
       };
