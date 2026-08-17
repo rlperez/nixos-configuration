@@ -1,4 +1,5 @@
-{ pkgs, primary_username, ... }: {
+{ pkgs, primary_username, repo_path, ... }:
+{
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
@@ -26,7 +27,14 @@
       };
     };
   };
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    config = {
+      safe = {
+        directory = repo_path;
+      };
+    };
+  };
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
