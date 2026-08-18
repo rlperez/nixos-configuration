@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+: "${REPO_PATH:?REPO_PATH is not set}"
+
+cd "$REPO_PATH"
 
 nix develop -c nvfetcher "$@"

@@ -1,8 +1,8 @@
-{ ... }:
+{ primary_username, ... }:
 
 {
-  home.username = "fr0bar";
-  home.homeDirectory = "/home/fr0bar";
+  home.username = primary_username;
+  home.homeDirectory = "/home/${primary_username}";
   home.stateVersion = "26.05";
   home.file = {
     # Bash
@@ -13,6 +13,8 @@
     # Environment
     ".config/shell/.env".source = ../config/shell/.env;
     ".config/shell/bash/.env".source = ../config/shell/bash/.env;
+
+    # Fish
     ".config/fish" = {
       source = ../config/shell/fish;
       force = true;

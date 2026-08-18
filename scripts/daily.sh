@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+: "${REPO_PATH:?REPO_PATH is not set}"
 
-scripts/update-flake.sh
+cd "$REPO_PATH"
+
 scripts/update-nvfetcher.sh --commit-changes
 scripts/rebuild.sh
