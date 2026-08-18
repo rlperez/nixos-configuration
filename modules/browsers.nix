@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.ladybird.enable = true;
   programs.firefox.enable = true;
 

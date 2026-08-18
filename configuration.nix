@@ -1,5 +1,15 @@
 { inputs, pkgs, ... }:
+let
+  host_name = "nixos";
+  primary_username = "fr0bar";
+  primary_user_full_name = "Rigoberto L. Perez";
+  repo_path = "/home/${primary_username}/Projects/nixos-config";
+in
 {
+  _module.args.primary_username = primary_username;
+  _module.args.primary_user_fullname = primary_user_full_name;
+  _module.args.repo_path = repo_path;
+
   imports =
     [
       ./hardware-configuration.nix
@@ -32,10 +42,16 @@
   hardware.keyboard.zsa.enable = true;
 
   home-manager = {
+    extraSpecialArgs = {
+      inherit primary_username;
+    };
+
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.fr0bar = import ./users/fr0bar.nix;
+    users.${primary_username} = import ./users/primary-user.nix {
+      inherit primary_username;
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -51,10 +67,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  maintenance.repoPath = "/home/fr0bar/Projects/nixos-config";
+  maintenance = {
+    repoPath = repo_path;
+    hostName = host_name;
+  };
 
   networking = {
-    hostName = "nixos";
+    hostName = host_name;
     networkmanager = {
       enable = true;
       wifi = {
@@ -74,8 +93,9 @@
   nix = {
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       options = "--delete-older-than 14d";
+      persistent = true;
     };
     settings = {
       auto-optimise-store = true;
@@ -86,9 +106,9 @@
   security.rtkit.enable = true;
   time.timeZone = "America/New_York";
 
-  users.users."fr0bar" = {
+  users.users.${primary_username} = {
     isNormalUser = true;
-    description = "Rigoberto L. Perez";
+    description = primary_user_full_name;
     extraGroups = [ "lp" "networkmanager" "podman" "wheel" ];
     shell = pkgs.fish;
   };
@@ -101,11 +121,25 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "26.05";
+  system = {
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It‘s perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    stateVersion = "26.05";
+    autoUpgrade = {
+      dates = "Sun 05:00";
+      enable = true;
+      flags = [
+        "--commit-lock-file"
+        "--print-build-logs"
+      ];
+      flake = "${repo_path}/flake.nix";
+      operation = "switch";
+      persistent = true;
+      randomizedDelaySec = "30min";
+    };
+  };
 }

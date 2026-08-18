@@ -1,19 +1,4 @@
 {
-    "betterbird-future": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "betterbird-future",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-aw8L+keuTXd/oUAPaNYRqf+lLpn+YZnM7kS0uFKi0jE=",
-            "type": "url",
-            "url": "https://www.betterbird.eu/downloads/153-Preview/betterbird-153.0esr-bb6-build6.en-US.linux-x86_64.tar.xz"
-        },
-        "version": "153.0esr-bb6-build6"
-    },
     "betterbird-release": {
         "cargoLock": null,
         "date": null,
@@ -23,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-00bAxsT43N4gT5fy14DWhVMLkWPYZLzNXBSUVjlLocA=",
+            "sha256": "sha256-EZCDdi+tumuGaBwDc/n/XBHYd3PhQi7tEHVpMsE1MH8=",
             "type": "url",
-            "url": "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-140.13.0esr-bb25.en-US.linux-x86_64.tar.xz"
+            "url": "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.1.0esr-bb7.en-US.linux-x86_64.tar.xz"
         },
-        "version": "140.13.0esr-bb25"
+        "version": "153.1.0esr-bb7"
     },
     "fish-eza": {
         "cargoLock": null,

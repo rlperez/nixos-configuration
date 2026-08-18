@@ -9,7 +9,7 @@ let
       dockerTools;
   };
 in {
-  betterbird = final.callPackage ../pkgs/betterbird/release.nix {
+  betterbird-release = final.callPackage ../pkgs/betterbird/release.nix {
     inherit sources;
   };
 

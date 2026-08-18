@@ -21,7 +21,8 @@ src.httpheader = "https://www.betterbird.eu/downloads/get.php?os=linux&lang=en-U
 src.regex = 'betterbird-([0-9][^/]*)\.en-US\.linux-x86_64\.tar\.xz'
 fetch.url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-$ver.en-US.linux-x86_64.tar.xz"
 
-[betterbird-future]
-src.httpheader = "https://www.betterbird.eu/downloads/get.php?os=linux&lang=en-US&version=future"
-src.regex = 'betterbird-([0-9][^/]*)\.en-US\.linux-x86_64\.tar\.xz'
-fetch.url = "https://www.betterbird.eu/downloads/153-Preview/betterbird-$ver.en-US.linux-x86_64.tar.xz"
+# There is no current future release after 153 esr became stable base
+# [betterbird-future]
+# src.httpheader = "https://www.betterbird.eu/downloads/get.php?os=linux&lang=en-US&version=future"
+# src.regex = 'betterbird-([0-9][^/]*)\.en-US\.linux-x86_64\.tar\.xz'
+# fetch.url = "https://www.betterbird.eu/downloads/153-Preview/betterbird-$ver.en-US.linux-x86_64.tar.xz"

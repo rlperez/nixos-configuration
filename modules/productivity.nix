@@ -6,7 +6,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    betterbird-future
+    betterbird-release
     kaccounts-integration
     signon-kwallet-extension
     signond
