@@ -6,20 +6,12 @@
   dockerTools,
 }:
 {
-  betterbird-future = {
-    pname = "betterbird-future";
-    version = "153.0esr-bb6-build10";
-    src = fetchurl {
-      url = "https://www.betterbird.eu/downloads/153-Preview/betterbird-153.0esr-bb6-build10.en-US.linux-x86_64.tar.xz";
-      sha256 = "sha256-Qk9PPx9ObvDSh8x5Lmk7WWDZEyluUa1A8EFiCcpWcT0=";
-    };
-  };
   betterbird-release = {
     pname = "betterbird-release";
-    version = "140.13.0esr-bb25";
+    version = "153.1.0esr-bb7";
     src = fetchurl {
-      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-140.13.0esr-bb25.en-US.linux-x86_64.tar.xz";
-      sha256 = "sha256-00bAxsT43N4gT5fy14DWhVMLkWPYZLzNXBSUVjlLocA=";
+      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.1.0esr-bb7.en-US.linux-x86_64.tar.xz";
+      sha256 = "sha256-EZCDdi+tumuGaBwDc/n/XBHYd3PhQi7tEHVpMsE1MH8=";
     };
   };
   fish-eza = {
