@@ -37,8 +37,11 @@ in
         };
         path = with pkgs; [
           bash
+          curl
           git
+          jq
           nix
+          nixos-rebuild
           util-linux
         ];
         serviceConfig = {
