@@ -22,6 +22,11 @@
     };
   };
 
+  programs.starship = {
+    enable = true;
+    presets = [ "nerd-font-symbols" "jetpack" ];
+    settings = { };
+  };
 
   xdg.enable = true;
 }

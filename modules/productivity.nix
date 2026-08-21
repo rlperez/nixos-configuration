@@ -13,5 +13,6 @@ in
 
     logseq-db
     newsflash
+    speedcrunch
   ];
 }
