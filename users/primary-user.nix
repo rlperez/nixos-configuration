@@ -22,10 +22,20 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+    generateCompletions = true;
+    shellInit = "source /home/${primary_username}/config/fish/config.fish";
+  };
+
   programs.starship = {
     enable = true;
+    enableFishIntegration = false;
     presets = [ "nerd-font-symbols" "jetpack" ];
-    settings = { };
+    settings = {
+      add_newline = true;
+      follow_symlinks = true;
+    };
   };
 
   xdg.enable = true;
