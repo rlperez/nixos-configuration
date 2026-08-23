@@ -50,6 +50,7 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     users.${primary_username} = import ./users/primary-user.nix {
+      inherit pkgs;
       inherit primary_username;
     };
   };

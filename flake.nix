@@ -49,13 +49,14 @@
     };
     devShells.x86_64-linux.default =
       let
+        system = "x86_64-linux";
         pkgs = import nixpkgs {
-          system = "x86_64-linux";
+          system = system;
         };
       in
       pkgs.mkShell {
         packages = [
-          nvfetcher.packages.x86_64-linux.default
+          nvfetcher.packages.${system}.default
         ];
       };
   };

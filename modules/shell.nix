@@ -11,7 +11,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    fishPlugins.async-prompt
     fishPlugins.autopair
     fishPlugins.bass
     fishPlugins.colored-man-pages

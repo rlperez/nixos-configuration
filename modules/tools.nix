@@ -39,10 +39,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-  programs.starship = {
-    enable = true;
-    interactiveOnly = true;
-  };
   programs.zoxide.enable = true;
 
   virtualisation.podman = {
