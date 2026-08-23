@@ -10,6 +10,8 @@ if test -e $HOME/.env
     envsrc $HOME/.env
 end
 
+set_path
+
 if status is-interactive
     if test -e $HOME/interactive.env
         envsrc $HOME/interactive.env
@@ -47,8 +49,14 @@ if status is-interactive
     end
 
     if type -q starship
-        set -l starship_command (which starship)
-        source ($starship_command init fish --print-full-init | psub)
+        function starship_transient_prompt_func
+          starship module character
+        end
+        function starship_transient_rprompt_func
+          starship module time
+        end
+        starship init fish --print-full-init | source
+        enable_transience
     end
 
     if type -q dockerfmt
@@ -69,5 +77,3 @@ if status is-interactive
 
     fish_logo (random_color) (random_color) (random_color)
 end
-
-set_path
