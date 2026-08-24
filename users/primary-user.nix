@@ -105,6 +105,58 @@
     settings = {
       add_newline = true;
       follow_symlinks = true;
+      format = "($nix_shell$container$fill$git_metrics\n)$cmd_duration$hostname$localip$shlvl$shell$env_var$jobs$sudo$username$character";
+      right_format = ''
+        $singularity
+        $kubernetes
+        $directory
+        $vcsh
+        $fossil_branch
+        $git_branch
+        $git_commit
+        $git_state
+        $git_status
+        $hg_branch
+        $pijul_channel
+        $docker_context
+        $package
+        $all
+        $memory_usage
+        $aws
+        $gcloud
+        $openstack
+        $azure
+        $crystal
+        $custom
+        $status
+        $os
+        $battery
+        $time'';
+      aws = {
+        disabled = false;
+      };
+      azure = {
+        format = " [azure](italic) [$symbol $subscription](bold bright-blue)";
+      };
+      bun = {
+        format = " [bun](italic) [$symbol ($version)](bold pink)";
+      };
+      directory = {
+        truncation_length = 3;
+      };
+      dotnet = {
+        format = " [dotnet](italic) [$symbol ($version)](bold bright-blue)";
+      };
+      fennel = {
+        format = " [fennel](italic) [$symbol ($version)](bold white)";
+      };
+      nodejs = {
+        format = " [nodejs](italic) [$symbol ($version)](bold bright-green)";
+      };
+      os = {
+        disabled = false;
+        format = "[$symbol ($version)](bold white)[⎥](bold italic bright-blue)";
+      };
     };
   };
 
