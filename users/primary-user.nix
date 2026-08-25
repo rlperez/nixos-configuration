@@ -105,6 +105,7 @@
     settings = {
       add_newline = true;
       follow_symlinks = true;
+      format = "($nix_shell$container$fill$git_metrics\n)$cmd_duration$hostname$localip$shlvl$shell$env_var$jobs$sudo$username$character";
       right_format = ''
         $singularity
         $kubernetes
@@ -151,6 +152,10 @@
       };
       nodejs = {
         format = " [nodejs](italic) [$symbol ($version)](bold bright-green)";
+      };
+      os = {
+        disabled = false;
+        format = "[$symbol ($version)](bold white)[⎥](bold italic bright-blue)";
       };
     };
   };
