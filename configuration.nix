@@ -33,28 +33,14 @@ in
     '';
   };
 
-  fileSystems = {
-    "/mnt/slow_storage" = {
-      device = "/dev/disk/by-uuid/f0739824-9f6f-4068-acdf-6414331f3511";
-      fsType = "ext4";
-    };
-
-    "/mnt/fast_storage" = {
-      device = "/dev/disk/by-uuid/83d5c600-2d0d-49b0-a0cb-e66cae5a2779";
-      fsType = "ext4";
-    };
+  fileSystems."/mnt/slow_storage" = {
+    device = "/dev/disk/by-uuid/f0739824-9f6f-4068-acdf-6414331f3511";
+    fsType = "ext4";
   };
 
-  fileSystems = {
-    "/mnt/slow_storage" = {
-      device = "/dev/disk/by-uuid/f0739824-9f6f-4068-acdf-6414331f3511";
-      fsType = "ext4";
-    };
-
-    "/mnt/fast_storage" = {
-      device = "/dev/disk/by-uuid/83d5c600-2d0d-49b0-a0cb-e66cae5a2779";
-      fsType = "ext4";
-    };
+  fileSystems."/mnt/fast_storage" = {
+    device = "/dev/disk/by-uuid/83d5c600-2d0d-49b0-a0cb-e66cae5a2779";
+    fsType = "ext4";
   };
 
   hardware.graphics = {
