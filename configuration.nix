@@ -37,12 +37,21 @@ in
   };
 
   environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        librewolf
-        brave
-      '';
-      mode = "0755";
+    crypttab.text = ''
+      slow_storage UUID=9f476a03-d2a3-49eb-84db-fd9639212911 /root/slow_storage.key
+      fast_storage UUID=ef01f363-ae97-4918-82a2-fa1796bd521a /root/fast_storage.key
+    '';
+  };
+
+  fileSystems = {
+    "/mnt/slow_storage" = {
+      device = "/dev/disk/by-uuid/f0739824-9f6f-4068-acdf-6414331f3511";
+      fsType = "ext4";
+    };
+
+    "/mnt/fast_storage" = {
+      device = "/dev/disk/by-uuid/83d5c600-2d0d-49b0-a0cb-e66cae5a2779";
+      fsType = "ext4";
     };
   };
 
