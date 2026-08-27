@@ -150,6 +150,9 @@
       fennel = {
         format = " [fennel](italic) [$symbol ($version)](bold white)";
       };
+      git_branch = {
+        truncation_length = 18;
+      };
       nodejs = {
         format = " [nodejs](italic) [$symbol ($version)](bold bright-green)";
       };
