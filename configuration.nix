@@ -22,17 +22,7 @@ in
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    initrd.luks.devices = {
-      slow_storage = {
-        device = "/dev/disk/by-uuid/9f476a03-d2a3-49eb-84db-fd9639212911";
-        keyFile = "/etc/luks-keys/slow_storage.key";
-      };
 
-      fast_storage = {
-        device = "/dev/disk/by-uuid/ef01f363-ae97-4918-82a2-fa1796bd521a";
-        keyFile = "/etc/luks-keys/fast_storage.key";
-      };
-    };
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
   };
 
