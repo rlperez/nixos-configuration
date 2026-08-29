@@ -22,6 +22,17 @@ in
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    initrd.luks.devices = {
+      slow_storage = {
+        device = "/dev/disk/by-uuid/9f476a03-d2a3-49eb-84db-fd9639212911";
+        keyFile = "/etc/luks-keys/slow_storage.key";
+      };
+
+      fast_storage = {
+        device = "/dev/disk/by-uuid/ef01f363-ae97-4918-82a2-fa1796bd521a";
+        keyFile = "/etc/luks-keys/fast_storage.key";
+      };
+    };
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
   };
 
@@ -30,6 +41,18 @@ in
       slow_storage UUID=9f476a03-d2a3-49eb-84db-fd9639212911 /root/slow_storage.key
       fast_storage UUID=ef01f363-ae97-4918-82a2-fa1796bd521a /root/fast_storage.key
     '';
+  };
+
+  fileSystems = {
+    "/mnt/slow_storage" = {
+      device = "/dev/disk/by-uuid/f0739824-9f6f-4068-acdf-6414331f3511";
+      fsType = "ext4";
+    };
+
+    "/mnt/fast_storage" = {
+      device = "/dev/disk/by-uuid/83d5c600-2d0d-49b0-a0cb-e66cae5a2779";
+      fsType = "ext4";
+    };
   };
 
   fileSystems = {
