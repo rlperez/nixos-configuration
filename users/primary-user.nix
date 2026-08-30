@@ -168,5 +168,19 @@
     enableBashIntegration = true;
   };
 
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      desktop = "/mnt/slow_storage/Home/${primary_username}/Desktop/";
+      documents = "/mnt/slow_storage/Home/${primary_username}/Documents/";
+      downloads = "/mnt/slow_storage/Home/${primary_username}/Downloads/";
+      music = "/mnt/slow_storage/Home/${primary_username}/Music/";
+      pictures = "/mnt/slow_storage/Home/${primary_username}/Pictures/";
+      projects = "/home/${primary_username}/Projects/";
+      templates = "/mnt/slow_storage/Home/${primary_username}/Templates/";
+      videos = "/mnt/slow_storage/Home/${primary_username}/Videos/";
+    };
+  };
 }
