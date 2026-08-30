@@ -48,6 +48,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    ansible
+    consul
     direnv
     dotenvx
     eza
@@ -58,11 +60,14 @@
     jq
     kubectl
     nix-direnv
+    nomad-driver-containerd
+    nomad-driver-podman
     onefetch
     p7zip
     podman-compose
     podman-desktop
     ripgrep
     tre
+    vault
   ];
 }

@@ -22,6 +22,7 @@ in
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
   };
 
