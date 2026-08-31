@@ -76,11 +76,6 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  maintenance = {
-    repoPath = repo_path;
-    hostName = host_name;
-  };
-
   networking = {
     hostName = host_name;
     networkmanager = {
