@@ -8,10 +8,10 @@
 {
   betterbird-release = {
     pname = "betterbird-release";
-    version = "153.1.0esr-bb7-build2";
+    version = "153.2.0esr-bb8";
     src = fetchurl {
-      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.1.0esr-bb7-build2.en-US.linux-x86_64.tar.xz";
-      sha256 = "sha256-40E+PcVxRTFJwLdvaG9+rdL2fIJOO/bEiXuqG3+uy2s=";
+      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.2.0esr-bb8.en-US.linux-x86_64.tar.xz";
+      sha256 = "sha256-FC67Y9P4TG1KiCUs7Swt0s5dKOs7CLBfENhB/j1PgAE=";
     };
   };
   fish-eza = {

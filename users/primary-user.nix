@@ -175,7 +175,7 @@
       createDirectories = true;
       desktop = "/mnt/slow_storage/Home/${primary_username}/Desktop/";
       documents = "/mnt/slow_storage/Home/${primary_username}/Documents/";
-      downloads = "/mnt/slow_storage/Home/${primary_username}/Downloads/";
+      download = "/mnt/slow_storage/Home/${primary_username}/Downloads/";
       music = "/mnt/slow_storage/Home/${primary_username}/Music/";
       pictures = "/mnt/slow_storage/Home/${primary_username}/Pictures/";
       projects = "/home/${primary_username}/Projects/";
