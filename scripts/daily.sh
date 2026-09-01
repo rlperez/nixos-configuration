@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-: "${REPO_PATH:?REPO_PATH is not set}"
+script_dir="$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")"
+repo_path="$(realpath -- "$script_dir/..")"
+cd "$repo_path"
 
-cd "$REPO_PATH"
+nix develop -c nvfetcher
+nix flake update;
 
-scripts/update-nvfetcher.sh --commit-changes
-scripts/rebuild.sh
+git add flake.lock _sources/
+
+sudo nixos-rebuild switch --flake "path:$repo_path"
+git commit -m "Performed system update at $(date '+%F_%H:%M:%S')"
