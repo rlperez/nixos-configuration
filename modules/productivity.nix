@@ -11,6 +11,11 @@ in
     signon-kwallet-extension
     signond
 
+    libreoffice-qt
+    hyphenDicts.en_US
+    hunspell
+    hunspellDicts.en_US
+
     logseq-db
     newsflash
     speedcrunch

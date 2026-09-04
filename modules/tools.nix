@@ -48,6 +48,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dbeaver-bin
     direnv
     dotenvx
     eza
