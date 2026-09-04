@@ -6,6 +6,7 @@
     ./fonts.nix
     ./gaming.nix
     ./language-servers.nix
+    ./maintenance.nix
     ./media.nix
     ./productivity.nix
     ./shell.nix
