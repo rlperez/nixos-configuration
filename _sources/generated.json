@@ -8,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-ON0kiQpmtM+aRbwk4VGS4AwmuSnhu433l0wWpFORKeI=",
+            "sha256": "sha256-JTsXYMm3pVAqIQyQ1TD4fuvcroe3rxOvIT1Q/7JV3BE=",
             "type": "url",
-            "url": "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.4.0esr-bb10.en-US.linux-x86_64.tar.xz"
+            "url": "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.5.0esr-bb11.en-US.linux-x86_64.tar.xz"
         },
-        "version": "153.4.0esr-bb10"
+        "version": "153.5.0esr-bb11"
     },
     "fish-eza": {
         "cargoLock": null,
@@ -65,11 +65,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Sd42cHizdnD+vbmH5WK3Xe4eGulsKL+4c4d5xCKX3Qw=",
+            "sha256": "sha256-EzVyVib2y/vzsAt3Q6YDVtLX2tEjzwC7+XSpvu9VaHA=",
             "type": "url",
-            "url": "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage"
+            "url": "https://github.com/logseq/logseq/releases/download/2.0.2/Logseq-linux-x86_64-2.0.2.AppImage"
         },
-        "version": "2.0.1"
+        "version": "2.0.2"
     },
     "logseq-md": {
         "cargoLock": null,

@@ -8,10 +8,10 @@
 {
   betterbird-release = {
     pname = "betterbird-release";
-    version = "153.4.0esr-bb10";
+    version = "153.5.0esr-bb11";
     src = fetchurl {
-      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.4.0esr-bb10.en-US.linux-x86_64.tar.xz";
-      sha256 = "sha256-ON0kiQpmtM+aRbwk4VGS4AwmuSnhu433l0wWpFORKeI=";
+      url = "https://www.betterbird.eu/downloads/LinuxArchive/betterbird-153.5.0esr-bb11.en-US.linux-x86_64.tar.xz";
+      sha256 = "sha256-JTsXYMm3pVAqIQyQ1TD4fuvcroe3rxOvIT1Q/7JV3BE=";
     };
   };
   fish-eza = {
@@ -40,10 +40,10 @@
   };
   logseq-db = {
     pname = "logseq-db";
-    version = "2.0.1";
+    version = "2.0.2";
     src = fetchurl {
-      url = "https://github.com/logseq/logseq/releases/download/2.0.1/Logseq-linux-x86_64-2.0.1.AppImage";
-      sha256 = "sha256-Sd42cHizdnD+vbmH5WK3Xe4eGulsKL+4c4d5xCKX3Qw=";
+      url = "https://github.com/logseq/logseq/releases/download/2.0.2/Logseq-linux-x86_64-2.0.2.AppImage";
+      sha256 = "sha256-EzVyVib2y/vzsAt3Q6YDVtLX2tEjzwC7+XSpvu9VaHA=";
     };
   };
   logseq-md = {
