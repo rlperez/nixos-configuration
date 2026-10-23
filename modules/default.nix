@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./backup.nix
     ./browsers.nix
     ./editors.nix
     ./fonts.nix
