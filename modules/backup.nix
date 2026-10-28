@@ -6,11 +6,13 @@ let
 
   rcloneSyncCmd = pkgs.writeShellScript "mega-sync" ''
     set -euo pipefail
-    ${pkgs.rclone}/bin/rclone sync \
+    ${pkgs.rclone}/bin/rclone --config="/etc/restic/rclone.conf" sync \
       ${resticRepo} \
       mega-s3:${megaBucket}/restic \
-      --transfers 4 \
-      --checkers 8 \
+      --transfers 24 \
+      --checkers 32 \
+      --s3-upload-cutoff 512M \
+      --s3-chunk-size 64M \
       --log-level INFO \
       --log-file /var/log/mega-sync.log
   '';
