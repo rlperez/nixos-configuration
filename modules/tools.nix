@@ -64,6 +64,5 @@
     podman-compose
     podman-desktop
     ripgrep
-    tre
   ];
 }

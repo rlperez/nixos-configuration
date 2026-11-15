@@ -112,7 +112,7 @@ in
   users.users.${primary_username} = {
     isNormalUser = true;
     description = primary_user_full_name;
-    extraGroups = [ "lp" "networkmanager" "podman" "wheel" ];
+    extraGroups = [ "gamemode" "lp" "networkmanager" "podman" "wheel" ];
     shell = pkgs.fish;
   };
 
