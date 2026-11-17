@@ -6,13 +6,15 @@ let
 
   rcloneSyncCmd = pkgs.writeShellScript "mega-sync" ''
     set -euo pipefail
-    ${pkgs.rclone}/bin/rclone sync \
+
+    exec ${pkgs.rclone}/bin/rclone --config="/etc/restic/rclone.conf" sync \
       ${resticRepo} \
-      mega-s3:${megaBucket}/restic \
-      --transfers 4 \
-      --checkers 8 \
-      --log-level INFO \
-      --log-file /var/log/mega-sync.log
+      megas4:${megaBucket}/restic \
+      --transfers 24 \
+      --checkers 32 \
+      --s3-upload-cutoff 512M \
+      --s3-chunk-size 64M \
+      --log-level INFO
   '';
 in
 {
@@ -52,6 +54,11 @@ in
       "/home/*/go/pkg"
       "/home/*/.gradle/caches"
       "/home/*/.m2/repository"
+      "/home/*/Games"
+      "/home/*/Downloads"
+      "/home/*/.local/share/Trash"
+      "/home/*/.local/share/Steam"
+      "/home/*/.local/share/umu"
       "/var/lib/libvirt/images"
       "/var/lib/docker"
       "/var/lib/containers"
@@ -65,8 +72,8 @@ in
 
     pruneOpts = [
       "--keep-daily"    "7"
-      "--keep-weekly"  "5"
-      "--keep-monthly" "12"
+      "--keep-weekly"   "5"
+      "--keep-monthly"  "12"
       "--keep-yearly"   "1"
     ];
 
@@ -77,13 +84,23 @@ in
     };
   };
 
-  systemd.services."restic-backups-local".serviceConfig = {
-    ExecStartPost = [ "${rcloneSyncCmd}" ];
-    EnvironmentFile = [ "/etc/restic/mega-s3.env" ];
+  systemd.services.mega-restic-sync = {
+    description = "Sync local Restic repository to MEGA S4";
+    after = [ "restic-backups-local.service" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      ExecStart = rcloneSyncCmd;
+    };
   };
+
+  systemd.services.restic-backups-local.unitConfig.OnSuccess =
+    [ "mega-restic-sync.service" ];
 
   systemd.services.restic-check = {
     description = "Verify restic repository integrity";
+
     serviceConfig = {
       Type = "oneshot";
       User = "root";
@@ -91,6 +108,7 @@ in
         "RESTIC_REPOSITORY=${resticRepo}"
         "RESTIC_PASSWORD_FILE=/etc/restic/password"
       ];
+
       ExecStart = [
         "${pkgs.restic}/bin/restic check"
         "${pkgs.restic}/bin/restic check --read-data-subset=5%"
@@ -100,6 +118,7 @@ in
 
   systemd.timers.restic-check = {
     wantedBy = [ "timers.target" ];
+
     timerConfig = {
       OnCalendar = "monthly";
       Persistent = true;

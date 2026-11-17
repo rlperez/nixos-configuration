@@ -4,5 +4,6 @@
     megacmd
     megasync
     rclone
+    restic
   ];
 }
